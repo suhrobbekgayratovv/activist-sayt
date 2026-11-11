@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Activist — Oqqo'rg'on 11-maktab faollari</title>
+<meta name="description" content="Activist guruhi: tozalik, ta'lim, bayramlar va tadbirlar. Toshkent viloyati, Oqqo'rg'on tumani, 11-sonli maktab. Bizga qo'shiling va qatnashing!">
+<meta name="theme-color" content="#06122b">
+<style>
+:root{
+  --bg:#06122b;
+  --bg2:#0a1c40;
+  --card:rgba(255,255,255,.05);
+  --line:rgba(255,255,255,.10);
+  --text:#eaf1ff;
+  --muted:#9db0d3;
+  --green:#2ee6a6;
+  --cyan:#35c8ff;
+  --blue:#4f7bff;
+  --grad:linear-gradient(135deg,var(--green),var(--cyan) 55%,var(--blue));
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI',system-ui,-apple-system,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1100px,92%);margin:0 auto}
+.blob{position:fixed;border-radius:50%;filter:blur(90px);opacity:.35;z-index:0;pointer-events:none}
+.b1{width:380px;height:380px;background:var(--green);top:-120px;left:-100px}
+.b2{width:420px;height:420px;background:var(--blue);bottom:-140px;right:-120px}
+header,main,footer{position:relative;z-index:1}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:50;background:rgba(6,18,43,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-weight:800;font-size:1.35rem;letter-spacing:.5px}
+.logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.links{display:flex;gap:26px;align-items:center}
+.links a{color:var(--muted);font-weight:500;transition:.2s}
+.links a:hover{color:var(--text)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 26px;border-radius:999px;font-weight:700;border:0;cursor:pointer;transition:.25s;font-size:1rem}
+.btn-main{background:var(--grad);color:#04122a;box-shadow:0 0 28px rgba(46,230,166,.35)}
+.btn-main:hover{transform:translateY(-3px);box-shadow:0 0 42px rgba(53,200,255,.55)}
+.btn-ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-3px)}
+.burger{display:none;background:none;border:0;color:var(--text);font-size:1.8rem;cursor:pointer}
+
+/* HERO */
+.hero{padding:110px 0 90px;text-align:center}
+.tag{display:inline-block;padding:7px 18px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--green);font-size:.9rem;font-weight:600;margin-bottom:26px}
+.hero h1{font-size:clamp(2.4rem,7vw,4.8rem);line-height:1.1;font-weight:800;margin-bottom:22px}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:680px;margin:0 auto 36px;color:var(--muted);font-size:1.15rem}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.place{margin-top:38px;color:var(--muted);font-size:.98rem}
+.place b{color:var(--text)}
+
+/* SECTIONS */
+section{padding:84px 0}
+.sec-head{text-align:center;margin-bottom:50px}
+.sec-head h2{font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:800;margin-bottom:12px}
+.sec-head p{color:var(--muted);max-width:620px;margin:0 auto}
+
+.about{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+.about p{color:var(--muted);margin-bottom:16px;font-size:1.05rem}
+.about p b{color:var(--text)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:30px}
+.panel li{list-style:none;padding:12px 0;border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:center}
+.panel li:last-child{border:0}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--grad);box-shadow:0 0 12px var(--green);flex:none}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:32px 26px;transition:.3s;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0;background:var(--grad);opacity:0;transition:.3s;z-index:-1}
+.card:hover{transform:translateY(-8px);border-color:rgba(53,200,255,.5);box-shadow:0 0 36px rgba(53,200,255,.18)}
+.ico{font-size:2.4rem;margin-bottom:14px}
+.card h3{font-size:1.3rem;margin-bottom:8px}
+.card p{color:var(--muted);font-size:.98rem}
+
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;counter-reset:s}
+.step{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:30px 26px;counter-increment:s}
+.step::before{content:counter(s);display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--grad);color:#04122a;font-weight:800;font-size:1.2rem;margin-bottom:16px}
+.step h3{margin-bottom:6px}
+.step p{color:var(--muted)}
+
+.cta{background:linear-gradient(135deg,rgba(46,230,166,.14),rgba(79,123,255,.18));border:1px solid var(--line);border-radius:30px;padding:60px 30px;text-align:center}
+.cta h2{font-size:clamp(1.8rem,4.5vw,2.7rem);margin-bottom:12px}
+.cta p{color:var(--muted);max-width:560px;margin:0 auto 30px}
+.contact-line{margin-top:22px;color:var(--muted);font-size:.95rem}
+.contact-line b{color:var(--cyan)}
+
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--muted);font-size:.92rem}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+
+@media(max-width:820px){
+  .about{grid-template-columns:1fr}
+  .burger{display:block}
+  .links{position:absolute;top:68px;left:0;right:0;flex-direction:column;gap:0;background:rgba(6,18,43,.97);border-bottom:1px solid var(--line);max-height:0;overflow:hidden;transition:max-height .35s}
+  .links.open{max-height:360px}
+  .links a{padding:16px 0;width:100%;text-align:center}
+  .hero{padding:80px 0 60px}
+}
+</style>
+</head>
+<body>
+<div class="blob b1"></div><div class="blob b2"></div>
+
+<header>
+<nav>
+  <div class="wrap nav-in">
+    <a href="#top" class="logo"><span>ACTIVIST</span></a>
+    <button class="burger" id="burger" aria-label="Menyu">☰</button>
+    <div class="links" id="links">
+      <a href="#haqida">Biz haqimizda</a>
+      <a href="#yonalish">Yo'nalishlar</a>
+      <a href="#qoshilish">Qanday qo'shilish</a>
+      <a href="#aloqa">Aloqa</a>
+      <a class="btn btn-main" href="https://t.me/Abks95" target="_blank" rel="noopener" style="padding:10px 22px">Qo'shilish</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero" id="top">
+  <div class="wrap">
+    <span class="tag">🌱 Faollar guruhi</span>
+    <h1>Birga <span class="grad">toza, bilimli</span><br>va faol bo'lamiz!</h1>
+    <p>Activist — tozalik, ta'lim, bayramlar va turli tadbirlarni tashkil qiladigan hamda ularda faol qatnashadigan jamoa. Siz ham bizga qo'shiling!</p>
+    <div class="hero-btns">
+      <a class="btn btn-main" href="https://t.me/Abks95" target="_blank" rel="noopener">✈️ Bizga qo'shiling</a>
+      <a class="btn btn-ghost" href="#yonalish">Faoliyatimiz</a>
+    </div>
+    <p class="place">📍 <b>Toshkent viloyati, Oqqo'rg'on tumani, 11-sonli maktab</b></p>
+  </div>
+</div>
+</header>
+
+<main>
+<section id="haqida">
+  <div class="wrap about">
+    <div class="rv">
+      <h2 style="font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:800;margin-bottom:18px">Biz <span class="grad">kimmiz?</span></h2>
+      <p><b>Activist</b> — Toshkent viloyati Oqqo'rg'on tumanidagi 11-sonli maktabda faoliyat yuritadigan faol yoshlar guruhi.</p>
+      <p>Biz maktabimizni va atrofimizni <b>toza va obod</b> saqlaymiz, <b>ta'lim</b> yo'nalishidagi ishlarni qo'llab-quvvatlaymiz, <b>bayramlar</b> va <b>tadbirlarni</b> tashkil qilamiz hamda ularda ishtirok etamiz.</p>
+      <p>Maqsadimiz — bir-birimizga ko'mak berib, ijobiy o'zgarishlarni o'zimizdan boshlash.</p>
+    </div>
+    <div class="panel rv">
+      <ul>
+        <li><span class="dot"></span> Tozalik va obodonlashtirish ishlari</li>
+        <li><span class="dot"></span> Ta'limga oid tadbirlar</li>
+        <li><span class="dot"></span> Bayram dasturlarini tashkil etish</li>
+        <li><span class="dot"></span> Turli tadbirlarda faol ishtirok</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="yonalish">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2>Bizning <span class="grad">yo'nalishlarimiz</span></h2>
+      <p>To'rtta asosiy yo'nalishda ish olib boramiz</p>
+    </div>
+    <div class="grid">
+      <div class="card rv"><div class="ico">🧹</div><h3>Tozalik</h3><p>Maktab va atrofini toza, ozoda saqlash, birgalikda tozalash ishlarini tashkil qilish.</p></div>
+      <div class="card rv"><div class="ico">📚</div><h3>Ta'lim</h3><p>Bilim va ma'rifatga oid tadbirlar, o'quvchilarning o'zaro yordami va rivojlanishi.</p></div>
+      <div class="card rv"><div class="ico">🎉</div><h3>Bayramlar</h3><p>Bayram dasturlarini tayyorlash va quvnoq, esda qoladigan tarzda o'tkazish.</p></div>
+      <div class="card rv"><div class="ico">🤝</div><h3>Tadbirlar</h3><p>Maktab va tuman miqyosidagi turli tadbirlarni tashkil qilish va ularda qatnashish.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="qoshilish">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <h2>Qanday <span class="grad">qo'shilish mumkin?</span></h2>
+      <p>Qo'shilish juda oson — uch qadam</p>
+    </div>
+    <div class="steps">
+      <div class="step rv"><h3>Yozing</h3><p>Telegram orqali guruh rahbariga yozing: <b>@Abks95</b></p></div>
+      <div class="step rv"><h3>Qo'shiling</h3><p>Guruhimizga a'zo bo'ling va jamoa bilan tanishing.</p></div>
+      <div class="step rv"><h3>Qatnashing</h3><p>Tozalik, ta'lim, bayram va boshqa tadbirlarda faol ishtirok eting.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="aloqa">
+  <div class="wrap">
+    <div class="cta rv">
+      <h2>Siz ham <span class="grad">Activist</span> bo'ling!</h2>
+      <p>Bizga qo'shiling va yaxshi ishlarimizda qatnashing. Hoziroq Telegram orqali yozing.</p>
+      <a class="btn btn-main" href="https://t.me/Abks95" target="_blank" rel="noopener">✈️ Telegram: @Abks95</a>
+      <p class="contact-line">📍 Toshkent viloyati, Oqqo'rg'on tumani, <b>11-sonli maktab</b></p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="yil"></span> Activist guruhi · Oqqo'rg'on tumani, 11-maktab</div>
+</footer>
+
+<script>
+document.getElementById('yil').textContent=new Date().getFullYear();
+const burger=document.getElementById('burger'),links=document.getElementById('links');
+burger.addEventListener('click',()=>links.classList.toggle('open'));
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
